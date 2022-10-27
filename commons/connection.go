@@ -8,17 +8,13 @@ import (
 )
 
 func GetConnection() *gorm.DB {
+	db, error := gorm.Open("mysql", "root:@/test?charset=utf8")
 
-	db, err := gorm.Open("mysql", "root:@/teste?charset=utf8")
-
-	if err != nil {
-
-		log.Fatal(err)
-
+	if error != nil {
+		log.Fatal(error)
 	}
 
 	return db
-
 }
 
 func Migrate() {

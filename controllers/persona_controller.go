@@ -11,7 +11,6 @@ import (
 )
 
 func GetAll(writer http.ResponseWriter, request *http.Request) {
-
 	personas := []models.Persona{}
 	db := commons.GetConnection()
 	defer db.Close()
@@ -19,32 +18,27 @@ func GetAll(writer http.ResponseWriter, request *http.Request) {
 	db.Find(&personas)
 	json, _ := json.Marshal(personas)
 	commons.SendReponse(writer, http.StatusOK, json)
-
 }
 
 func Get(writer http.ResponseWriter, request *http.Request) {
-
 	persona := models.Persona{}
 
 	id := mux.Vars(request)["id"]
 
 	db := commons.GetConnection()
-
 	defer db.Close()
+
 	db.Find(&persona, id)
 
-	if persona.ID >= 0 {
-
+	if persona.ID > 0 {
 		json, _ := json.Marshal(persona)
 		commons.SendReponse(writer, http.StatusOK, json)
-
 	} else {
-
 		commons.SendError(writer, http.StatusNotFound)
-
 	}
 
 }
+
 func Save(writer http.ResponseWriter, request *http.Request) {
 	persona := models.Persona{}
 
@@ -70,11 +64,9 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 	json, _ := json.Marshal(persona)
 
 	commons.SendReponse(writer, http.StatusCreated, json)
-
 }
 
 func Delete(writer http.ResponseWriter, request *http.Request) {
-
 	persona := models.Persona{}
 
 	db := commons.GetConnection()
@@ -85,14 +77,9 @@ func Delete(writer http.ResponseWriter, request *http.Request) {
 	db.Find(&persona, id)
 
 	if persona.ID > 0 {
-
 		db.Delete(persona)
 		commons.SendReponse(writer, http.StatusOK, []byte(`{}`))
-
 	} else {
-
 		commons.SendError(writer, http.StatusNotFound)
-
 	}
-
 }
