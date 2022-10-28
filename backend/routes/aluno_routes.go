@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/pedro-barreto/Trabalho-SD/controllers"
+	"github.com/pedro-barreto/Trabalho-SD/backend/controllers"
 )
 
 func SetAlunoRoutes(router *mux.Router) {

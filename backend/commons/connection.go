@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
-	"github.com/pedro-barreto/Trabalho-SD/models"
+	"github.com/pedro-barreto/Trabalho-SD/backend/models"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )

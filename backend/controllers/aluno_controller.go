@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/pedro-barreto/Trabalho-SD/commons"
-	"github.com/pedro-barreto/Trabalho-SD/models"
+	"github.com/pedro-barreto/Trabalho-SD/backend/commons"
+	"github.com/pedro-barreto/Trabalho-SD/backend/models"
 )
 
 func GetAll(writer http.ResponseWriter, request *http.Request) {

@@ -2,8 +2,14 @@ package main
 
 import "fmt"
 
-func main(){
+func listarAlunos() {
 
 	fmt.Print("Hello World")
+
+}
+
+func main() {
+
+	listarAlunos()
 
 }

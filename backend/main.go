@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/pedro-barreto/Trabalho-SD/commons"
-	"github.com/pedro-barreto/Trabalho-SD/routes"
+	"github.com/pedro-barreto/Trabalho-SD/backend/commons"
+	"github.com/pedro-barreto/Trabalho-SD/backend/routes"
 )
 
 func main() {
