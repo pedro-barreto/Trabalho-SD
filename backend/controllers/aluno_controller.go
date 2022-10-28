@@ -11,6 +11,7 @@ import (
 )
 
 func GetAll(writer http.ResponseWriter, request *http.Request) {
+
 	alunos := []models.Aluno{}
 	db := commons.GetConnection()
 	defer db.Close()
@@ -18,9 +19,11 @@ func GetAll(writer http.ResponseWriter, request *http.Request) {
 	db.Find(&alunos)
 	json, _ := json.Marshal(alunos)
 	commons.SendReponse(writer, http.StatusOK, json)
+
 }
 
 func Get(writer http.ResponseWriter, request *http.Request) {
+
 	aluno := models.Aluno{}
 
 	id := mux.Vars(request)["id"]
@@ -31,15 +34,20 @@ func Get(writer http.ResponseWriter, request *http.Request) {
 	db.Find(&aluno, id)
 
 	if aluno.ID > 0 {
+
 		json, _ := json.Marshal(aluno)
 		commons.SendReponse(writer, http.StatusOK, json)
+
 	} else {
+
 		commons.SendError(writer, http.StatusNotFound)
+
 	}
 
 }
 
 func Save(writer http.ResponseWriter, request *http.Request) {
+
 	aluno := models.Aluno{}
 
 	db := commons.GetConnection()
@@ -48,25 +56,33 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 	error := json.NewDecoder(request.Body).Decode(&aluno)
 
 	if error != nil {
+
 		log.Fatal(error)
 		commons.SendError(writer, http.StatusBadRequest)
+
 		return
+
 	}
 
 	error = db.Save(&aluno).Error
 
 	if error != nil {
+
 		log.Fatal(error)
 		commons.SendError(writer, http.StatusInternalServerError)
+
 		return
+
 	}
 
 	json, _ := json.Marshal(aluno)
 
 	commons.SendReponse(writer, http.StatusCreated, json)
+
 }
 
 func Edit(writer http.ResponseWriter, request *http.Request) {
+
 	aluno := models.Aluno{}
 
 	db := commons.GetConnection()
@@ -79,17 +95,23 @@ func Edit(writer http.ResponseWriter, request *http.Request) {
 	error := json.NewDecoder(request.Body).Decode(&aluno)
 
 	if error != nil {
+
 		log.Fatal(error)
 		commons.SendError(writer, http.StatusBadRequest)
+
 		return
+
 	}
 
 	error = db.Save(&aluno).Error
 
 	if error != nil {
+
 		log.Fatal(error)
 		commons.SendError(writer, http.StatusInternalServerError)
+
 		return
+
 	}
 
 	json, _ := json.Marshal(aluno)
@@ -99,6 +121,7 @@ func Edit(writer http.ResponseWriter, request *http.Request) {
 }
 
 func Delete(writer http.ResponseWriter, request *http.Request) {
+
 	aluno := models.Aluno{}
 
 	db := commons.GetConnection()
@@ -109,9 +132,14 @@ func Delete(writer http.ResponseWriter, request *http.Request) {
 	db.Find(&aluno, id)
 
 	if aluno.ID > 0 {
+
 		db.Delete(aluno)
 		commons.SendReponse(writer, http.StatusOK, []byte(``))
+
 	} else {
+
 		commons.SendError(writer, http.StatusNotFound)
+
 	}
+
 }

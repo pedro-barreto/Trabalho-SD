@@ -10,12 +10,14 @@ import (
 )
 
 func main() {
+
 	commons.Migrate()
 
 	router := mux.NewRouter()
 	routes.SetAlunoRoutes(router)
 
 	server := http.Server{
+
 		Addr:    ":8080",
 		Handler: router,
 	}
