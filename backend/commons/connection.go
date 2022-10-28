@@ -11,7 +11,7 @@ import (
 
 func GetConnection() *gorm.DB {
 
-	db, error := gorm.Open("mysql", "root:@/test?charset=utf8")
+	db, error := gorm.Open("mysql", "root:@/escola?charset=utf8")
 
 	if error != nil {
 
