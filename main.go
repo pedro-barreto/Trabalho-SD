@@ -10,18 +10,17 @@ import (
 )
 
 func main() {
-
 	commons.Migrate()
 
 	router := mux.NewRouter()
-	routes.SetPersonaRoutes(router)
+	routes.SetAlunoRoutes(router)
 
 	server := http.Server{
-		Addr:    ":9000",
+		Addr:    ":8080",
 		Handler: router,
 	}
 
-	log.Println("Servidor esta rodando na porta: 9000")
+	log.Println("Servidor esta rodando na porta 8080")
 	log.Println(server.ListenAndServe())
 
 }

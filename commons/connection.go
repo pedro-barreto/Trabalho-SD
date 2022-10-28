@@ -5,6 +5,8 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/pedro-barreto/Trabalho-SD/models"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func GetConnection() *gorm.DB {
@@ -21,7 +23,7 @@ func Migrate() {
 	db := GetConnection()
 	defer db.Close()
 
-	log.Println("Migrando....")
+	log.Println("Executando o banco....")
 
-	db.AutoMigrate(&models.Persona{})
+	db.AutoMigrate(&models.Aluno{})
 }
