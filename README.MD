@@ -19,4 +19,7 @@
  -> Observamos o CRUD pelo "postman".
  -> O REST foi feito usando as bibliotecas "net/http" e "gorm"
 
- - No frontend nos tentamos listar todos os alunos, mas não soubemos como puxar para o terminal
+ - No frontend nos fizemos uma simples chamada do banco, para testar a interação entre os dois containers.
+ - Basta executar o "main.go" para exibir no terminal todos os cadastros do banco.
+
+ *** OBS: Nos iremos detalhar mais os dados para a próxima etapa, nosso foco nessa etapa foi mais a interação ***
